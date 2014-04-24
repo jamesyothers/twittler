@@ -14,11 +14,11 @@
        
 
 
-        window.visitor = prompt('Enter username: ');
-        streams.users[visitor] = [];
-        var message = prompt('Enter Tweet: ');
+        //window.visitor = prompt('Enter username: ');
+        //streams.users[visitor] = [];
+        //var message = prompt('Enter Tweet: ');
         //message = new Date() + ' ' + message;
-        writeTweet(message);
+        //writeTweet(message);
 
 
 
@@ -31,11 +31,14 @@
           while(index >= 0) {
             var tweet = streams.home[index];
             var $tweet = $('<div></div>');
-            $tweet.text(tweet.created_at + ': @' + tweet.user + ': ' + tweet.message);
+            var time = tweet.created_at.toString();
+            var indexer = time.indexOf('G');
+            time = time.slice(0, indexer);
+            $tweet.text(time + ': @' + tweet.user + ': ' + tweet.message);
             $tweet.appendTo($body);
             index -= 1;
           }
-        }, 500);
+        }, 5000);
 
       });
 
