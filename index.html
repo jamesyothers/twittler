@@ -21,15 +21,19 @@
 
 
       $(document).ready(function(){
-       /* var $body = $('body');
-        $body.html('');
-
+       var $messages = $('.messages');
+        $messages.html('');
+/*
        
          <div class = "navbar navbar-inverse navbar-static-top">
         <div class = "container">
           <div class = "navbar-brand">Twittler</div>
       </div>
         </div>
+
+           <h2>Section for Twittles</h2>
+                <p>Twitter bootstrap allows web developers and designers to quickly create attractive and responsive website templates. This tutorial provided by <a href="http://www.revillweb.com/">RevillWeb.com</a> will show you how to use Twitter Bootstrap 3 to create this responsive website template.</p>
+
 
 
         //window.visitor = prompt('Enter username: ');
@@ -39,7 +43,13 @@
         //writeTweet(message);
 
 
-
+        Chat.display = function (str) {
+          var replacements = [[/&/g, "&amp;"], [/"/g, "&quot;"], [/</g, "&lt;"], [/>/g, "&gt;"]];  
+          for (var j=0; j<replacements.length; j++) {
+            str = str.replace([j][0], [j][1]);
+          }
+          $('.messages').append('<li>' + str + '</li>');  //convert message to HTML and display
+        };
 
 
         
@@ -58,6 +68,21 @@
           }
         }, 5000);
 */
+        setInterval(function() { 
+          var index = streams.home.length - 1;
+          $('.messages li').remove();
+          while(index >= 0) {
+            var tweet = streams.home[index];
+            var $tweet = $('<li></li>');
+            var time = tweet.created_at.toString();
+            var indexer = time.indexOf('G');
+            time = time.slice(0, indexer);
+            $tweet.text(time + ': @' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($messages);
+            index -= 1;
+          }
+        }, 5000);
+
       });
     
     </script>
@@ -76,10 +101,9 @@
             <div class="to-tutorial">
                 <a href="http://www.revillweb.com/tutorials/bootstrap-tutorial/" class="btn btn-success glyphicon glyphicon-refresh">  More Twittles</a>                
             </div>
-
-            <h2>Section for Twittles</h2>
-                <p>Twitter bootstrap allows web developers and designers to quickly create attractive and responsive website templates. This tutorial provided by <a href="http://www.revillweb.com/">RevillWeb.com</a> will show you how to use Twitter Bootstrap 3 to create this responsive website template.</p>
-
+             
+             <ul class="messages">
+         
         </div>
             <div class="col-md-3">
                 <h2>Current Users</h2>
