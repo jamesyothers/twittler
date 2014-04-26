@@ -34,7 +34,8 @@
            <h2>Section for Twittles</h2>
                 <p>Twitter bootstrap allows web developers and designers to quickly create attractive and responsive website templates. This tutorial provided by <a href="http://www.revillweb.com/">RevillWeb.com</a> will show you how to use Twitter Bootstrap 3 to create this responsive website template.</p>
 
-
+        <ul class="nav nav-pills nav-stacked">
+                    <li><a href="http://getbootstrap.com/" target="_blank">User 1</a></li>
 
         //window.visitor = prompt('Enter username: ');
         //streams.users[visitor] = [];
@@ -68,6 +69,10 @@
           }
         }, 5000);
 */
+
+
+     
+
         setInterval(function() { 
           var index = streams.home.length - 1;
           $('.messages li').remove();
@@ -83,7 +88,25 @@
           }
         }, 5000);
 
+  
+
+      
+
+      //var $usernames = $('.usernames');
+      //$usernames.html('');
+      
+      console.log(users);
+      users.forEach(function(user,index, users) {
+        //var $user = $('<li></li>');
+        //$user.appendTo($usernames);
+        $('.usernames').append('<li>' + user + '</li>');
       });
+
+      
+       
+  });
+      
+    
     
     </script>
 
@@ -107,17 +130,16 @@
         </div>
             <div class="col-md-3">
                 <h2>Current Users</h2>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="http://getbootstrap.com/" target="_blank">User 1</a></li>
-                    <li><a href="https://www.bootstrapresponsivethemes.com/" target="_blank">User 2</a></li>
-                    <li><a href="http://amzn.to/1iO8NBg" target="_blank">User 3</a></li>
-                    <li><a href="http://amzn.to/1lESKDp" target="_blank">User 4</a></li>
-                    <li><a href="http://amzn.to/1oXAbu6" target="_blank">User 5</a></li>
-                    <li><a href="http://amzn.to/1lESF2w" target="_blank">User 6</a></li>
+                <ul class="usernames">
+
+
+                
+          
                 </ul>
             </div>
         </div>
     </div> 
+
    
   </body>
 </html>
