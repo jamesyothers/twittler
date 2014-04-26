@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <script src="jquery.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Twittler</title>
+    <script src="includes/jquery/jquery.js"></script>
+    <script src="includes/bootstrap/js/bootstrap.min.js"></script>
     <script src="data_generator.js"></script>
+    <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/jquery/styles.css" rel="stylesheet">
   </head>
   <body>
+     
+     
+   
+
+       
     <script>
 
+
       $(document).ready(function(){
-        var $body = $('body');
+       /* var $body = $('body');
         $body.html('');
 
        
+         <div class = "navbar navbar-inverse navbar-static-top">
+        <div class = "container">
+          <div class = "navbar-brand">Twittler</div>
+      </div>
+        </div>
 
 
         //window.visitor = prompt('Enter username: ');
@@ -39,9 +57,43 @@
             index -= 1;
           }
         }, 5000);
-
+*/
       });
-
+    
     </script>
+
+    <div class="banner">
+      <div class="container">
+        <h1>Twittler</h1>
+        <p>A Twitter-esque application designed with Bootstrap.</p>
+      </div>
+    </div>
+     
+  <div class="middle">
+     <div class="container">
+         <div class="col-md-9 content">
+                
+            <div class="to-tutorial">
+                <a href="http://www.revillweb.com/tutorials/bootstrap-tutorial/" class="btn btn-success glyphicon glyphicon-refresh">  More Twittles</a>                
+            </div>
+
+            <h2>Section for Twittles</h2>
+                <p>Twitter bootstrap allows web developers and designers to quickly create attractive and responsive website templates. This tutorial provided by <a href="http://www.revillweb.com/">RevillWeb.com</a> will show you how to use Twitter Bootstrap 3 to create this responsive website template.</p>
+
+        </div>
+            <div class="col-md-3">
+                <h2>Current Users</h2>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="http://getbootstrap.com/" target="_blank">User 1</a></li>
+                    <li><a href="https://www.bootstrapresponsivethemes.com/" target="_blank">User 2</a></li>
+                    <li><a href="http://amzn.to/1iO8NBg" target="_blank">User 3</a></li>
+                    <li><a href="http://amzn.to/1lESKDp" target="_blank">User 4</a></li>
+                    <li><a href="http://amzn.to/1oXAbu6" target="_blank">User 5</a></li>
+                    <li><a href="http://amzn.to/1lESF2w" target="_blank">User 6</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+   
   </body>
 </html>
