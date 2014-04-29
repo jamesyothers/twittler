@@ -13,11 +13,64 @@
   </head>
   <body>
      
-     
-   
 
-       
+    <div class="banner">
+      <div class="container">
+        <h1>Twittler</h1>
+        <p>A Twitter-esque application designed with Bootstrap.</p>
+      </div>
+    </div>
+     
+  <div class="middle">
+     <div class="container">
+        <div class="col-md-9 content">
+                
+            <div class="to-tutorial">
+                <a href="#" class="btn btn-success glyphicon glyphicon-refresh">  More Twittles</a>                
+            </div>
+             
+             <ul class="messages">
+         
+        </div>
+            <div class="col-md-3">
+                <h2>Current Users</h2>
+                <ul class="usernames">
+
+
+                
+          
+                </ul>
+            </div>
+        </div>
+    </div> 
+   
+  </body>
+
+
     <script>
+
+
+      var display = function($messages) { 
+        //setInterval( function() {
+          var index = streams.home.length - 1;
+          console.log(streams.home);
+          console.log(streams.home.length);
+          $('.messages li').remove();
+          console.log(index);
+          while(index >= 0) {
+            var tweet = streams.home[index];
+            var $tweet = $('<li></li>');
+            var time = tweet.created_at.toString();
+            var indexer = time.indexOf('G');
+            time = time.slice(0, indexer);
+            $tweet.text(time + ': @' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($messages);
+            index -= 1;
+          }
+        //}, 5000);
+      };
+
+
 
 
       $(document).ready(function(){
@@ -71,32 +124,27 @@
 */
 
 
-     
+       
 
-        setInterval(function() { 
-          var index = streams.home.length - 1;
-          $('.messages li').remove();
-          while(index >= 0) {
-            var tweet = streams.home[index];
-            var $tweet = $('<li></li>');
-            var time = tweet.created_at.toString();
-            var indexer = time.indexOf('G');
-            time = time.slice(0, indexer);
-            $tweet.text(time + ': @' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($messages);
-            index -= 1;
-          }
-        }, 5000);
 
-  
+        display($messages);
+        //setInterval(display, 5000);
+
+        $('.btn-success').click(function() {
+          display($messages);
+        }); 
 
       
 
       //var $usernames = $('.usernames');
       //$usernames.html('');
       
-      console.log(users);
+      //console.log(users);
       users.forEach(function(user,index, users) {
+        var replacements = [[/&/g, "&amp;"], [/"/g, "&quot;"], [/</g, "&lt;"], [/>/g, "&gt;"]];  
+          for (var j=0; j<replacements.length; j++) {
+            user = user.replace([j][0], [j][1]);
+          }
         //var $user = $('<li></li>');
         //$user.appendTo($usernames);
         $('.usernames').append('<li>' + user + '</li>');
@@ -109,37 +157,4 @@
     
     
     </script>
-
-    <div class="banner">
-      <div class="container">
-        <h1>Twittler</h1>
-        <p>A Twitter-esque application designed with Bootstrap.</p>
-      </div>
-    </div>
-     
-  <div class="middle">
-     <div class="container">
-         <div class="col-md-9 content">
-                
-            <div class="to-tutorial">
-                <a href="http://www.revillweb.com/tutorials/bootstrap-tutorial/" class="btn btn-success glyphicon glyphicon-refresh">  More Twittles</a>                
-            </div>
-             
-             <ul class="messages">
-         
-        </div>
-            <div class="col-md-3">
-                <h2>Current Users</h2>
-                <ul class="usernames">
-
-
-                
-          
-                </ul>
-            </div>
-        </div>
-    </div> 
-
-   
-  </body>
 </html>
