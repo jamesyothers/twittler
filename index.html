@@ -82,10 +82,12 @@
         $('.messages li').remove();
         var user = $(this).text();
         console.log(streams.users[user]);
+        
         (streams.users[user]).forEach(function(element,index,messagesObj) {
-        console.log(element.message);
-        $('.messages').append('<li>' + element.message + '</li>'); 
+          var string = '<li>' + element.created_at.toString() + ': @' + element.user + ': ' + element.message + '</li>'
+          $('.messages').append(string); 
         });
+
       });
 
 
