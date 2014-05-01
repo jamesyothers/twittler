@@ -12,7 +12,6 @@
     <link href="includes/jquery/styles.css" rel="stylesheet">
   </head>
   <body>
-     
 
     <div class="banner">
       <div class="container">
@@ -24,39 +23,28 @@
   <div class="middle">
      <div class="container">
         <div class="col-md-9 content">
-                
             <div class="to-tutorial">
                 <a href="#" class="btn btn-success glyphicon glyphicon-refresh">  More Twittles</a>                
             </div>
-             
              <ul class="messages">
-         
         </div>
             <div class="col-md-3">
                 <h2>Current Users</h2>
-                <ul class="usernames">
-
-
-                
-          
-                </ul>
+                <div class="usernames">
+                  
+                </div>
             </div>
-        </div>
-    </div> 
+    </div>
+  </div> 
    
   </body>
 
 
     <script>
 
-
       var display = function($messages) { 
-        //setInterval( function() {
           var index = streams.home.length - 1;
-          console.log(streams.home);
-          console.log(streams.home.length);
           $('.messages li').remove();
-          console.log(index);
           while(index >= 0) {
             var tweet = streams.home[index];
             var $tweet = $('<li></li>');
@@ -67,94 +55,42 @@
             $tweet.appendTo($messages);
             index -= 1;
           }
-        //}, 5000);
       };
-
-
-
 
       $(document).ready(function(){
        var $messages = $('.messages');
         $messages.html('');
-/*
-       
-         <div class = "navbar navbar-inverse navbar-static-top">
-        <div class = "container">
-          <div class = "navbar-brand">Twittler</div>
-      </div>
-        </div>
-
-           <h2>Section for Twittles</h2>
-                <p>Twitter bootstrap allows web developers and designers to quickly create attractive and responsive website templates. This tutorial provided by <a href="http://www.revillweb.com/">RevillWeb.com</a> will show you how to use Twitter Bootstrap 3 to create this responsive website template.</p>
-
-        <ul class="nav nav-pills nav-stacked">
-                    <li><a href="http://getbootstrap.com/" target="_blank">User 1</a></li>
-
-        //window.visitor = prompt('Enter username: ');
-        //streams.users[visitor] = [];
-        //var message = prompt('Enter Tweet: ');
-        //message = new Date() + ' ' + message;
-        //writeTweet(message);
-
-
-        Chat.display = function (str) {
-          var replacements = [[/&/g, "&amp;"], [/"/g, "&quot;"], [/</g, "&lt;"], [/>/g, "&gt;"]];  
-          for (var j=0; j<replacements.length; j++) {
-            str = str.replace([j][0], [j][1]);
-          }
-          $('.messages').append('<li>' + str + '</li>');  //convert message to HTML and display
-        };
-
-
-        
-        setInterval(function() { 
-          var index = streams.home.length - 1;
-          $('div').remove();
-          while(index >= 0) {
-            var tweet = streams.home[index];
-            var $tweet = $('<div></div>');
-            var time = tweet.created_at.toString();
-            var indexer = time.indexOf('G');
-            time = time.slice(0, indexer);
-            $tweet.text(time + ': @' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($body);
-            index -= 1;
-          }
-        }, 5000);
-*/
-
-
-       
-
 
         display($messages);
-        //setInterval(display, 5000);
+      
 
         $('.btn-success').click(function() {
           display($messages);
         }); 
 
-      
-
-      //var $usernames = $('.usernames');
-      //$usernames.html('');
-      
-      //console.log(users);
       users.forEach(function(user,index, users) {
-        var replacements = [[/&/g, "&amp;"], [/"/g, "&quot;"], [/</g, "&lt;"], [/>/g, "&gt;"]];  
-          for (var j=0; j<replacements.length; j++) {
-            user = user.replace([j][0], [j][1]);
-          }
-        //var $user = $('<li></li>');
-        //$user.appendTo($usernames);
-        $('.usernames').append('<li>' + user + '</li>');
+        //var replacements = [[/&/g, "&amp;"], [/"/g, "&quot;"], [/</g, "&lt;"], [/>/g, "&gt;"]];  
+        //  for (var j=0; j<replacements.length; j++) {
+        //    user = user.replace([j][0], [j][1]);
+        //  }
+        $('.usernames').append('<a href="#">' + user + '</a>');     
       });
+     
+      console.log($('.usernames a').text());
+
+      $('.usernames').on('click', 'a', function() {
+        $('.messages li').remove();
+        var user = $(this).text();
+        console.log(streams.users[user]);
+        (streams.users[user]).forEach(function(element,index,messagesObj) {
+        console.log(element.message);
+        $('.messages').append('<li>' + element.message + '</li>'); 
+        });
+      });
+
 
       
        
   });
-      
-    
-    
     </script>
 </html>
